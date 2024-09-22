@@ -35,10 +35,13 @@ import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopBarWithInfo(modifier: Modifier = Modifier) {
+fun TopBarWithInfo(
+    modifier: Modifier = Modifier,
+    onMenu: ()->Unit
+) {
     TopAppBar(
         navigationIcon = {
-            IconButton(onClick = {}) {
+            IconButton(onClick = {onMenu()}) {
                 Icon(
                     imageVector=Icons.Default.Menu,
                     contentDescription = "",
@@ -46,46 +49,7 @@ fun TopBarWithInfo(modifier: Modifier = Modifier) {
             }
         },
         title = {
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ){
-
-                if(true){
-                    Icon(
-                        imageVector = Icons.Filled.AccountCircle,
-                        contentDescription = "",
-                        tint =  MaterialTheme.colorScheme.onPrimary,
-                        modifier = Modifier.size(56.dp)
-                    )
-                }else {
-                    Image(
-                        imageVector = Icons.Filled.AccountCircle,
-                        contentDescription = "",
-                        modifier = Modifier
-                            .size(56.dp)
-                            .clip(CircleShape)
-                            .background(
-                                color = Color.Magenta,
-                                shape = CircleShape
-                            )
-                    )
-                }
-                Box(modifier = Modifier
-                    .width(10.dp)
-                )
-               Column {
-                   Text(
-                       text = "Saikat Islam",
-                       overflow = TextOverflow.Ellipsis,
-                       )
-                   Text(
-                       text="saikat709@gmail.com",
-                       style= TextStyle(
-                           fontSize = 13.sp
-                       )
-                   )
-               }
-            }
+           UserTile()
         },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primary,
@@ -99,5 +63,5 @@ fun TopBarWithInfo(modifier: Modifier = Modifier) {
 @Composable
 @Preview
 fun TopBarWithInfoPrev(modifier: Modifier = Modifier) {
-    TopBarWithInfo()
+    TopBarWithInfo(onMenu = {})
 }

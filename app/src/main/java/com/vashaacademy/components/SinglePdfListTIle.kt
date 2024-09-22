@@ -1,5 +1,6 @@
 package com.vashaacademy.components
 
+import android.app.Activity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,6 +27,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun SinglePdfListTile(modifier: Modifier = Modifier) {
+    val abc = (LocalContext.current as Activity).codeCacheDir.toPath().toString()
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -44,7 +47,7 @@ fun SinglePdfListTile(modifier: Modifier = Modifier) {
             )
         )
         Text(
-            text="Some deatils of the book",
+            text="Some deatils of the book $abc",
         )
 
         Spacer(modifier = Modifier.height(5.dp))
@@ -55,14 +58,6 @@ fun SinglePdfListTile(modifier: Modifier = Modifier) {
                 .fillMaxWidth()
 
         ){
-            OutlinedButton(
-                onClick = {}
-            ) {
-                Text("Read here")
-            }
-
-            Spacer(modifier = Modifier.width(10.dp))
-
             OutlinedButton(
                 onClick = {}
             ) {

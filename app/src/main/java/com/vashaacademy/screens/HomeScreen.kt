@@ -17,19 +17,20 @@ import com.vashaacademy.components.*
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    navController: NavHostController? = null
+    navController: NavHostController? = null,
+    onMenu: ()->Unit
 ) {
-    val activity = LocalContext.current as Activity
-    activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-
-    var currentScreen = remember { mutableIntStateOf(0) }
+    val currentScreen = remember { mutableIntStateOf(0) }
     Scaffold(
-        topBar = { TopBarWithInfo() },
+        topBar = { TopBarWithInfo(
+            onMenu = {onMenu()}
+        ) },
         bottomBar = { BottomNavBar(screen = currentScreen) },
     ){
         when(currentScreen.intValue){
             0 -> CoursesPartialScreen(
-                modifier = Modifier.padding(it)
+                modifier = Modifier.padding(it),
+                navController = navController
             )
             1 -> PdfsPartialScreen(
                 modifier = Modifier.padding(it)
@@ -42,5 +43,5 @@ fun HomeScreen(
 @Composable
 @Preview(uiMode = UI_MODE_NIGHT_YES)
 fun HomeScreenPrev(modifier: Modifier = Modifier) {
-    HomeScreen()
+    HomeScreen(onMenu = {})
 }

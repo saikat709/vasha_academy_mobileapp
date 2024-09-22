@@ -6,7 +6,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.vashaacademy.constants.Screen
+import com.vashaacademy.screens.CourseScreen
 import com.vashaacademy.screens.HomeScreen
+import com.vashaacademy.screens.HomeScreenWithDrawer
 import com.vashaacademy.screens.LoginScreen
 import com.vashaacademy.screens.TakeExamScreen
 import com.vashaacademy.screens.VerificationScreen
@@ -24,7 +26,7 @@ fun SetUpNavHost(
         composable(
             route = Screen.Home.route,
         ){
-            HomeScreen(navController=navController)
+            HomeScreenWithDrawer(navController=navController)
         }
 
         composable(
@@ -46,9 +48,16 @@ fun SetUpNavHost(
         }
 
         composable(
+            route = Screen.Course.route
+        ){
+            CourseScreen(navController = navController)
+        }
+
+        composable(
             route = Screen.Exam.route
         ){
             TakeExamScreen(navController = navController)
         }
+
     }
 }

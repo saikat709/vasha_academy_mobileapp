@@ -1,5 +1,6 @@
 package com.vashaacademy.components
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CourseTile() {
+fun CourseTile( onEnroll: ()->Unit ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -50,7 +51,12 @@ fun CourseTile() {
 //            TextButton(onClick = { /*TODO*/ }) {
 //                Text(text = "Preview" )
 //            }
-            TextButton(onClick = { /*TODO*/ }) {
+            TextButton(
+                onClick = {
+                    onEnroll()
+                    Log.d("saikat", "Clicked Enroll Button")
+                }
+            ) {
                 Text(text = "Enroll")
             }
         }
@@ -60,5 +66,5 @@ fun CourseTile() {
 @Preview(showBackground = true)
 @Composable
 fun CourseTilePrev() {
-    CourseTile()
+    CourseTile(onEnroll = {})
 }

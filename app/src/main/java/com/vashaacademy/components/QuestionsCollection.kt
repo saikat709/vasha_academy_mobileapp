@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun QuestionsCollection() {
+fun QuestionsCollection(onQuestionClick: (Int)-> Unit) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(100.dp),
     ){
@@ -28,19 +28,19 @@ fun QuestionsCollection() {
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
-                    .size(100.dp)
+                    .size(90.dp)
                     .padding(5.dp)
                     .background(
                         color = Color.Gray.copy(alpha = 0.15f),
                         shape = RoundedCornerShape(10.dp)
                     )
                     .clickable {
-
+                        onQuestionClick(it)
                     }
                     .padding(10.dp)
             ){
                 Text(
-                    text = "$it",
+                    text = "${it+1}",
                     style = TextStyle(
                         fontSize = 35.sp
                     )
@@ -54,5 +54,5 @@ fun QuestionsCollection() {
 @Preview(showSystemUi = true, uiMode = UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
 fun QuestionsCollectionPrev() {
-    QuestionsCollection()
+    QuestionsCollection(onQuestionClick = {})
 }

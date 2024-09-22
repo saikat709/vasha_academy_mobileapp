@@ -6,4 +6,5 @@ sealed class Screen(val route: String) {
     data object Verification: Screen("/verification")
     data object Welcome: Screen("/welcome")
     data object Exam: Screen("/exam")
+    data object Course: Screen("/course")
 }

@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun ExamTile() {
+fun ExamTile(onStart: ()->Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -50,7 +50,9 @@ fun ExamTile() {
             TextButton(onClick = { /*TODO*/ }) {
                 Text(text = "Preview" )
             }
-            TextButton(onClick = { /*TODO*/ }) {
+            TextButton(
+                onClick = { onStart() }
+            ) {
                 Text(text = "Start")
             }
         }
@@ -60,5 +62,5 @@ fun ExamTile() {
 @Preview(showBackground = true)
 @Composable
 fun ExamTilePrev() {
-    ExamTile()
+    ExamTile(onStart = {})
 }

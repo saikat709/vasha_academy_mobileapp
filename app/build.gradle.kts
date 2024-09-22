@@ -56,5 +56,15 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil.compose)
+    implementation(libs.prdownloader)
+    implementation(libs.bouquet)
+
+    implementation(libs.retrofit)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    implementation(libs.androidx.datastore.preferences)
+
 }
