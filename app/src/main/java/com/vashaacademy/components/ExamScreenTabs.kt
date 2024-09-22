@@ -41,7 +41,7 @@ fun ExamScreenTabs(
 
     Row(
         modifier = Modifier
-            .height(60.dp)
+            .height(55.dp)
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween

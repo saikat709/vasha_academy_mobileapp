@@ -34,35 +34,17 @@ fun QuestionViewScreen(modifier: Modifier = Modifier) {
         modifier = Modifier
             .then(modifier)
             .fillMaxSize()
+            .padding(15.dp)
     ){
         Column(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxWidth(0.5f)
                 .verticalScroll(scrollState)
-                .padding(15.dp)
+                .padding(end = 10.dp)
         ){
-            Text(text = buildAnnotatedString {
-                withStyle(
-                    style = SpanStyle(
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                ){
-                    append("1. ")
-                }
 
-                withStyle(
-                    style = SpanStyle(
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Normal
-                    )
-                ){
-                    append("Question text goes here")
-                }
-            })
-
+            Question(questionNo = 20)
             Spacer(modifier = Modifier.height(20.dp))
-
             ElevatedButton(
                 onClick = { /*TODO*/ }
             ) {
@@ -72,7 +54,7 @@ fun QuestionViewScreen(modifier: Modifier = Modifier) {
             }
         }
         Column {
-            TextImageOrBoth(imageUrl = "https://media.istockphoto.com/id/1696167872/photo/aerial-view-of-forest-at-sunset-on-the-background-of-mountains-in-dolomites.jpg?s=612x612&w=is&k=20&c=mW0RiTTyqnRnmuIq4OfqIpRqCtPNqtaoTG_DUDzDCSQ=")
+            Option(options = listOf("28", "298", "uwui"))
         }
     }
 }

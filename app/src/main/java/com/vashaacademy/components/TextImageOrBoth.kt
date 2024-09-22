@@ -1,47 +1,48 @@
 package com.vashaacademy.components
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 
 @Composable
 fun TextImageOrBoth(
     modifier: Modifier = Modifier,
-    optionText : String? = null,
-    imageUrl: String? = null,
-    number: Any = 1
-) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically
-    ){
-        Text(
-            text = "$number",
-            style = TextStyle(
-                fontWeight = FontWeight.Black
-            )
-        )
+    optionText : String? = "This is Question text",
+    imageUrl: String? = "https://media.istockphoto.com/id/1696167872/photo/aerial-view-of-forest-at-sunset-on-the-background-of-mountains-in-dolomites.jpg?s=612x612&w=is&k=20&c=mW0RiTTyqnRnmuIq4OfqIpRqCtPNqtaoTG_DUDzDCSQ=",
+){
 
-        Column {
-            if (optionText != null){
-                Text(text = optionText)
-            }
-            if(imageUrl != null){
-                AsyncImage(
-                    model = imageUrl,
-                    contentDescription = null,
-                    placeholder = null,
-                    error = null,
-                )
-            }
+    Column(
+        modifier = Modifier
+            .then(modifier)
+            .padding(horizontal = 10.dp)
+            .padding(bottom = 10.dp)
+    ){
+        if (optionText != null){
+            Text(
+                text = optionText,
+                fontSize = 18.sp
+            )
+        }
+        if(imageUrl != null){
+            AsyncImage(
+                model = imageUrl,
+                contentDescription = null,
+                placeholder = null,
+                error = null,
+                modifier = Modifier
+                    .padding(top = 10.dp)
+                    .height(90.dp)
+            )
         }
     }
+
 }
 
 @Preview
