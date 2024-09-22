@@ -17,7 +17,6 @@ fun Question(
     Row(
         modifier = Modifier
             .then(modifier)
-            .padding(all = 10.dp),
     ){
         Text(text = "$questionNo. ",
             fontSize = 24.sp,

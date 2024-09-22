@@ -27,7 +27,10 @@ enum class ExamScreen{
 }
 
 @Composable
-fun TakeExamScreen(navController:NavHostController?=null) {
+fun TakeExamScreen(
+    navController:NavHostController?=null,
+
+) {
     val activity = LocalContext.current as Activity
     activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
 

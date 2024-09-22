@@ -22,7 +22,7 @@ fun TextImageOrBoth(
         modifier = Modifier
             .then(modifier)
             .padding(horizontal = 10.dp)
-            .padding(bottom = 10.dp)
+            .padding(bottom = 1.dp)
     ){
         if (optionText != null){
             Text(
@@ -37,7 +37,7 @@ fun TextImageOrBoth(
                 placeholder = null,
                 error = null,
                 modifier = Modifier
-                    .padding(top = 10.dp)
+                    .padding(top = 2.dp)
                     .height(90.dp)
             )
         }
