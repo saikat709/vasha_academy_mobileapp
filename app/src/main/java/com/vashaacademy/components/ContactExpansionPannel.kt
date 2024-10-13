@@ -17,6 +17,7 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -24,9 +25,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.vashaacademy.viewmodels.LangViewModel
 
 @Composable
-fun ContactExpansionPannel(modifier: Modifier = Modifier) {
+fun ContactExpansionPannel(modifier: Modifier = Modifier, langViewModel: LangViewModel= viewModel()) {
+
+    val isEnglish by langViewModel.isEnglish.observeAsState()
 
     var isExpanded by remember { mutableStateOf(false) }
     val rotation by animateFloatAsState(
@@ -45,7 +50,7 @@ fun ContactExpansionPannel(modifier: Modifier = Modifier) {
     ){
         ListItem(
             headlineContent = {
-                Text("Contact us")
+                Text(if ( isEnglish!! )"Contact us" else "যোগাযোগ করু")
             },
             trailingContent = {
                 Icon(
@@ -71,15 +76,15 @@ fun ContactExpansionPannel(modifier: Modifier = Modifier) {
                 modifier = Modifier.padding(start = 30.dp)
             ){
                 ListItem(
-                    headlineContent = { Text("Phone") },
+                    headlineContent = { Text(if ( isEnglish!! )"Phone" else "ফোন করুন") },
                     leadingContent = { Icon(imageVector = Icons.Default.Call, contentDescription = "") }
                 )
                 ListItem(
-                    headlineContent = { Text("WhatsApp") },
+                    headlineContent = { Text(if ( isEnglish!! )"WhatsApp" else "হোয়াটস অ্যাপ") },
                     leadingContent = { Icon(imageVector = Icons.Default.Call, contentDescription = "") }
                 )
                 ListItem(
-                    headlineContent = { Text("Messenger") },
+                    headlineContent = { Text(if ( isEnglish!! )"Messenger" else "মেসে্নজার") },
                     leadingContent = { Icon(imageVector = Icons.Default.ThumbUp, contentDescription = "") }
                 )
             }

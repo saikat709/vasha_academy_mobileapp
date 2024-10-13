@@ -1,6 +1,7 @@
 package com.vashaacademy.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -20,6 +21,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,18 +31,23 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.vashaacademy.components.LanguageSelection
 import com.vashaacademy.R
 import com.vashaacademy.components.ContactExpansionPannel
+import com.vashaacademy.constants.Screen
+import com.vashaacademy.viewmodels.LangViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 fun HomeScreenWithDrawer(
     modifier: Modifier = Modifier,
-    navController: NavHostController? = null
+    navController: NavHostController? = null,
+    langViewModel: LangViewModel = viewModel()
 ) {
 
+    val isEnglish by langViewModel.isEnglish.observeAsState()
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
@@ -64,7 +72,10 @@ fun HomeScreenWithDrawer(
                     ContactExpansionPannel()
                     ListItem(
                         leadingContent = { Icon(imageVector = Icons.Default.Info, contentDescription = "") },
-                        headlineContent = { Text(text = "Frequently Asked Questions") }
+                        headlineContent = { Text(text = if ( isEnglish!! ) "Frequently Asked Questions" else "সাধারণ জিজ্ঞাসা") },
+                        modifier = Modifier.clickable {
+                            navController?.navigate(Screen.Faq.route)
+                        }
                     )
                     Spacer(modifier = Modifier.weight(1f))
                     ElevatedButton(
@@ -74,7 +85,7 @@ fun HomeScreenWithDrawer(
                             contentColor = Color.White
                         )
                     ) {
-                        Text(text = "Log Out")
+                        Text(text = if ( isEnglish!! ) "Log Out" else "লগ আউট")
                     }
                 }
             }

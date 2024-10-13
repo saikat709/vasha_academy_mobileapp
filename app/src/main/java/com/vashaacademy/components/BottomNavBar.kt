@@ -3,6 +3,7 @@ package com.vashaacademy.components
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -48,11 +49,26 @@ fun BottomNavBar(
 
         NavigationBarItem(
             onClick = {
-                screen.value = 1
+                screen.intValue = 1
+            },
+            label = { Text("Notices") },
+            icon = { Icon(imageVector = Icons.Default.Notifications, contentDescription = "") },
+            selected = screen.intValue == 1,
+            colors = NavigationBarItemDefaults.colors(
+                unselectedTextColor = MaterialTheme.colorScheme.onPrimary.copy(0.7f),
+                unselectedIconColor = MaterialTheme.colorScheme.onPrimary.copy(0.7f),
+                selectedTextColor = MaterialTheme.colorScheme.onPrimary,
+                selectedIconColor = MaterialTheme.colorScheme.primary
+            )
+        )
+
+        NavigationBarItem(
+            onClick = {
+                screen.intValue = 2
             },
             label = { Text("PDF books") },
             icon = { Icon(imageVector = Icons.Default.Email, contentDescription = "") },
-            selected = screen.intValue == 1,
+            selected = screen.intValue == 2,
             colors = NavigationBarItemDefaults.colors(
                 unselectedTextColor = MaterialTheme.colorScheme.onPrimary.copy(0.7f),
                 unselectedIconColor = MaterialTheme.colorScheme.onPrimary.copy(0.7f),

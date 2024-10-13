@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.vashaacademy"
-        minSdk = 29
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -63,6 +63,7 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.retrofit)
+    implementation(libs.retrofit.adapters.result)
     implementation(libs.converter.gson)
 
     implementation(libs.androidx.datastore.preferences)

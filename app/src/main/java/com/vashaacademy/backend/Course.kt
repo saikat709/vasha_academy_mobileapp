@@ -1,5 +1,8 @@
 package com.vashaacademy.backend
 
-class Course {
-
-}
+data class Course (
+    val id:Int,
+    val title: String,
+    val price: String,
+    val thumbnail: String
+)

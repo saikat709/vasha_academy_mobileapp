@@ -1,7 +1,5 @@
 package com.vashaacademy.screens
 
-import android.app.Activity
-import android.content.pm.ActivityInfo
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -9,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import com.vashaacademy.components.*
@@ -32,8 +29,13 @@ fun HomeScreen(
                 modifier = Modifier.padding(it),
                 navController = navController
             )
-            1 -> PdfsPartialScreen(
+            1 -> NoticePartialScreen(
                 modifier = Modifier.padding(it)
+            )
+
+            2 -> PdfsPartialScreen(
+                modifier = Modifier.padding(it),
+                navController = navController,
             )
         }
     }
